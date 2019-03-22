@@ -26,7 +26,7 @@ const jiechaBot = (bot) => {
         imageRules = tidyRules(imageRules);
     }, 86400*1000);
 
-    // tidy function, delete rules with 0 rate and with same trigger and same author
+    // tidy function, delete rules with 0 probability and with same trigger and same author
     const tidyRules = (ruleSet) => {
         let newSet = [];
         let validMap = new Map(); // to remove duplicate rules
@@ -69,7 +69,7 @@ const jiechaBot = (bot) => {
                 } else if(state === 2) {
                     rate = parseInt(ctx.message.text, 10) || 100;
                     state = 3;
-                    ctx.reply(`Percentage is ${rate}% \nPlease send me a sticker.`);
+                    ctx.reply(`Probability is ${rate}% \nPlease send me a sticker.`);
                 } else if (state === 3) {
                     ctx.reply("Please send me a sticker.");
                 } else {
@@ -166,7 +166,7 @@ const jiechaBot = (bot) => {
             } else if(state === 2) {
                 rate = parseInt(ctx.message.text, 10) || 100;
                 state = 3;
-                ctx.reply(`Percentage is ${rate} \nPlease send me a sticker.`);
+                ctx.reply(`Probability is ${rate} \nPlease send me a sticker.`);
             } else if (state === 3) {
                 ctx.reply("Please send me a sticker.");
             } else {
